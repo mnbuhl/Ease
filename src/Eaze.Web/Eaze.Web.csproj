@@ -88,4 +88,11 @@
       <ProjectReference Include="..\Eaze.Infrastructure\Eaze.Infrastructure.csproj" />
     </ItemGroup>
 
+
+
+
+    <ItemGroup>
+      <Folder Include="client-react\src\lib\utils\" />
+    </ItemGroup>
+
 </Project>

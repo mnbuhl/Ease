@@ -6,23 +6,26 @@ namespace Eaze.Domain.Models;
 
 public sealed class User : BaseEntity, ITimestamped
 {
-    [RegularExpression(RegexPatterns.Username)]
-    public required string Username { get; set; }
-    
     [EmailAddress]
     public required string Email { get; set; }
     
+    [RegularExpression(RegexPatterns.Username)]
+    public string? Username { get; set; }
+
+    public string? Name { get; set; }
     public string Password { get; set; } = default!;
     
-    public bool EmailConfirmed { get; set; }
+    public DateTime? EmailVerifiedAt { get; set; }
     public Guid SecurityStamp { get; set; } = Guid.NewGuid();
-    
-    [RegularExpression(RegexPatterns.Username)]
-    public string NormalizedUsername { get; set; } = default!;
     
     [EmailAddress]
     public string NormalizedEmail { get; set; } = default!;
     
+    [RegularExpression(RegexPatterns.Username)]
+    public string? NormalizedUsername { get; set; }
+    
     public DateTime Created { get; set; }
     public DateTime Updated { get; set; }
+    
+    public ICollection<Role> Roles { get; set; } = new List<Role>();
 }

@@ -1,4 +1,5 @@
-﻿using InertiaCore.Extensions;
+﻿using Eaze.Web.Middleware;
+using InertiaCore.Extensions;
 
 namespace Eaze.Web;
 
@@ -22,6 +23,8 @@ public static class RequestPipeline
         app.UseRouting();
 
         app.UseAuthorization();
+
+        app.UseInertiaSharedData();
 
         app.MapControllerRoute(
             name: "default",

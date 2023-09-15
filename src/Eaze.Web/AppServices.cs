@@ -1,4 +1,6 @@
-﻿using InertiaCore.Extensions;
+﻿using Eaze.Infrastructure.Data;
+using Eaze.Infrastructure.Identity;
+using InertiaCore.Extensions;
 
 namespace Eaze.Web;
 
@@ -20,5 +22,8 @@ public static class AppServices
         });
         
         builder.Services.AddControllersWithViews();
+
+        builder.AddDataServices();
+        builder.AddIdentityServices();
     }
 }

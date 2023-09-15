@@ -5,14 +5,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-
-
+    
     <ItemGroup>
       <PackageReference Include="NewId" Version="4.0.1" />
     </ItemGroup>
-
-
-
 
 </Project>
