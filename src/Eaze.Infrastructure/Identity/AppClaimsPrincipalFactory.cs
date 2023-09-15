@@ -14,9 +14,23 @@ public sealed class AppClaimsPrincipalFactory(UserManager<User> userManager, IOp
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.Name ?? string.Empty),
-            new Claim(ClaimTypes.Email, user.Email)
+            new Claim(ClaimTypes.Email, user.Email),
         };
+
+        if (user.Username is not null)
+        {
+            claims.Add(new Claim(ClaimTypes.Name, user.Username));
+        }
+
+        if (user.Name is not null)
+        {
+            claims.Add(new Claim(ClaimTypes.GivenName, user.Name));
+        }
+        
+        foreach (string role in await userManager.GetRolesAsync(user))
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
         
         identity.AddClaims(claims);
         

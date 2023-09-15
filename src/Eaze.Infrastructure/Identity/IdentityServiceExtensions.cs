@@ -1,4 +1,5 @@
-﻿using Eaze.Domain.Models;
+﻿using Eaze.Application.Common.Interfaces;
+using Eaze.Domain.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,8 @@ public static class IdentityServiceExtensions
             .AddSignInManager<SignInManager<User>>()
             .AddUserStore<UserStore>()
             .AddClaimsPrincipalFactory<AppClaimsPrincipalFactory>();
+
+        builder.Services.AddScoped<IAuthService, AuthService>();
         
         return builder;
     }
