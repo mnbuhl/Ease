@@ -13,6 +13,8 @@ Eaze is heavily inspired and borrows a lot from [Laravel Breeze](https://github.
 ## TODO
 
 - [ ] : Finish backend implementations
+- [ ] : Convert to template
+- [ ] : Add SSR support
 - [ ] : Publish to NuGet
 - [ ] : Add Vue support
 - [ ] : Add tests
@@ -40,6 +42,7 @@ dotnet new eaze-vue -n MyProject
 - ASP.NET Core 8.0
 - ASP.NET Core Identity
 - Entity Framework Core
+- SSR or CSR
 - Inertia.js
 - React or Vue
 - Tailwind CSS
