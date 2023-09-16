@@ -10,9 +10,7 @@ public sealed class EmailSender(ILogger<EmailSender> logger) : IEmailSender
     {
         logger.LogWarning("Email sending is not implemented");
 
-        logger.LogInformation("To: {To}", mailable.To);
-        logger.LogInformation("Subject: {Subject}", mailable.Subject);
-        logger.LogInformation("Body: {Body}", mailable.Body);
+        LogEmail(mailable);
 
         return Task.FromResult(true);
     }
@@ -21,9 +19,7 @@ public sealed class EmailSender(ILogger<EmailSender> logger) : IEmailSender
     {
         logger.LogWarning("Email sending is not implemented");
 
-        logger.LogInformation("To: {To}", mailable.To);
-        logger.LogInformation("Subject: {Subject}", mailable.Subject);
-        logger.LogInformation("Body: {Body}", mailable.Body);
+        LogEmail(mailable);
 
         return true;
     }
@@ -32,6 +28,11 @@ public sealed class EmailSender(ILogger<EmailSender> logger) : IEmailSender
     {
         logger.LogWarning("Email sending is not implemented");
 
+        LogEmail(mailable);
+    }
+
+    private void LogEmail(Mailable mailable)
+    {
         logger.LogInformation("To: {To}", mailable.To);
         logger.LogInformation("Subject: {Subject}", mailable.Subject);
         logger.LogInformation("Body: {Body}", mailable.Body);

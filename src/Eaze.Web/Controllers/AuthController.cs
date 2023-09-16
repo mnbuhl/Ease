@@ -1,6 +1,8 @@
 ﻿using Eaze.Application.Common.Interfaces;
+using Eaze.Application.Common.Models;
 using Eaze.Application.Mail;
 using Eaze.Application.Requests;
+using Eaze.Domain.Constants;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -45,14 +47,13 @@ public sealed class AuthController(IAuthService authService, IEmailSender emailS
             return Register();
         }
 
-        var url = Url.Action("ConfirmEmail", "Auth", new { userId = Guid.NewGuid(), token = "test" }, Request.Scheme);
-
         var user = await authService.Register(request);
 
         var token = await authService.GenerateEmailConfirmationToken(user);
 
-        await emailSender.SendAsync(new ConfirmEmail(user,
-            Url.Action("ConfirmEmail", "Auth", new { userId = user.Id, token }, Request.Scheme)!));
+        var url = Url.Action("ConfirmEmail", "Auth", new { userId = user.Id, token }, Request.Scheme)!;
+
+        await emailSender.SendAsync(new ConfirmEmail(user, url));
         
         await authService.Login(new LoginRequest(request.Email, request.Password, true));
 
@@ -71,8 +72,10 @@ public sealed class AuthController(IAuthService authService, IEmailSender emailS
     [HttpGet]
     public async Task<IActionResult> ConfirmEmail(Guid userId, string token)
     {
-        var user = await authService.ConfirmEmail(userId, token);
+        await authService.ConfirmEmail(userId, token);
 
-        return Inertia.Render("Auth/ConfirmEmail", new { user.Name });
+        Inertia.Share("toast", new Toast("Thank you for confirming your email address.", ToastType.Success));
+
+        return RedirectToAction("Index", "Dashboard");
     }
 }

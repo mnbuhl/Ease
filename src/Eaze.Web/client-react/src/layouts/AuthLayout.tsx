@@ -5,11 +5,12 @@ import ApplicationLogo from '../assets/ApplicationLogo';
 import { isCurrentRoute } from '../util/route';
 import NavLink from '../components/NavLink';
 import Dropdown from '../components/Dropdown';
+import Toast from '../components/Toast';
 
 const AuthLayout = ({ children, header }: PropsWithChildren<{ header?: ReactNode }>) => {
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
-  const { auth } = usePage<PageProps>().props;
+  const { auth, toast } = usePage<PageProps>().props;
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -125,6 +126,7 @@ const AuthLayout = ({ children, header }: PropsWithChildren<{ header?: ReactNode
       )}
 
       <main>{children}</main>
+      <Toast message={toast?.message} type={toast?.type} />
     </div>
   );
 };

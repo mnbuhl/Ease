@@ -14,7 +14,7 @@ public sealed class ConfirmEmail : Mailable
 
         Body = new ComponentRenderer<Templates.ConfirmEmail>()
             .Set(c => c.Name, user.Name!)
-            .Set(c => c.CallbackUrl, callbackUrl)
+            .Set(c => c.CallbackUrl, callbackUrl.Replace("amp;", ""))
             .UseLayout<MainLayout>()
             .Render();
     }

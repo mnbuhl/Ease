@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createInertiaApp } from '@inertiajs/react';
@@ -12,11 +11,7 @@ createInertiaApp({
     return pages[`./pages/${name}.tsx`];
   },
   setup({ el, App, props }) {
-    createRoot(el).render(
-      <React.StrictMode>
-        <App {...props} />
-      </React.StrictMode>
-    );
+    createRoot(el).render(<App {...props} />);
   },
   progress: {
     color: '#242585',
