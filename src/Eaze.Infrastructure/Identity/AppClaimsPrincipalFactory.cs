@@ -5,7 +5,8 @@ using Microsoft.Extensions.Options;
 
 namespace Eaze.Infrastructure.Identity;
 
-public sealed class AppClaimsPrincipalFactory(UserManager<User> userManager, IOptions<IdentityOptions> optionsAccessor) : UserClaimsPrincipalFactory<User>(userManager, optionsAccessor)
+public sealed class AppClaimsPrincipalFactory(UserManager<User> userManager, IOptions<IdentityOptions> optionsAccessor)
+    : UserClaimsPrincipalFactory<User>(userManager, optionsAccessor)
 {
     protected override async Task<ClaimsIdentity> GenerateClaimsAsync(User user)
     {
@@ -26,14 +27,19 @@ public sealed class AppClaimsPrincipalFactory(UserManager<User> userManager, IOp
         {
             claims.Add(new Claim(ClaimTypes.GivenName, user.Name));
         }
-        
+
         foreach (string role in await userManager.GetRolesAsync(user))
         {
             claims.Add(new Claim(ClaimTypes.Role, role));
         }
-        
+
+        foreach (var claim in await userManager.GetClaimsAsync(user))
+        {
+            claims.Add(new Claim(claim.Type, claim.Value));
+        }
+
         identity.AddClaims(claims);
-        
+
         return identity;
     }
 }

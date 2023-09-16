@@ -1,7 +1,8 @@
 import { Head, usePage } from '@inertiajs/react';
 import { PageProps } from '../lib/utils/page-props';
+import GuestLayout from '../layouts/GuestLayout';
 
-const IndexPage = () => {
+const Index = () => {
   const { auth } = usePage<PageProps>().props;
 
   console.log(auth);
@@ -16,4 +17,6 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+Index.layout = (page: JSX.Element) => <GuestLayout>{page}</GuestLayout>;
+
+export default Index;

@@ -18,18 +18,15 @@ public static class IdentityServiceExtensions
             });
 
         builder.Services.AddAuthorizationBuilder();
-        
+
         builder.Services.AddIdentityCore<User>()
-            .AddRoles<Role>()
-            .AddRoleManager<RoleManager<Role>>()
-            .AddRoleStore<RoleStore>()
             .AddUserManager<UserManager<User>>()
             .AddSignInManager<SignInManager<User>>()
             .AddUserStore<UserStore>()
             .AddClaimsPrincipalFactory<AppClaimsPrincipalFactory>();
 
         builder.Services.AddScoped<IAuthService, AuthService>();
-        
+
         return builder;
     }
 }
