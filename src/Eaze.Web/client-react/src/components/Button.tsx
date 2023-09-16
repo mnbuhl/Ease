@@ -1,12 +1,12 @@
 import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary' | 'danger' | 'text';
   loading?: boolean;
-}
+};
 
 const Button = ({
   children,
@@ -17,7 +17,7 @@ const Button = ({
   ...props
 }: Props) => {
   let classes =
-    'inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150 disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150 disabled:opacity-50 disabled:cursor-not-allowed ';
 
   switch (variant) {
     case 'primary':

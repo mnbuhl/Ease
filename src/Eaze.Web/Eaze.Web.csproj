@@ -71,6 +71,8 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\assets\main-2422847d.css"/>
+        <_ContentIncludedByDefault Remove="wwwroot\dist\assets\main-5c5dd12f.js"/>
     </ItemGroup>
 
 

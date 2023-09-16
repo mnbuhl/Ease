@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Eaze.Domain.Constants;
 using InertiaCore;
 
 namespace Eaze.Web.Middleware;
@@ -19,7 +20,8 @@ public sealed class InertiaMiddleware(RequestDelegate next)
                         Id = context.User.FindFirstValue(ClaimTypes.NameIdentifier),
                         Email = context.User.FindFirstValue(ClaimTypes.Email),
                         Name = context.User.FindFirstValue(ClaimTypes.GivenName),
-                        Roles = context.User.FindAll(ClaimTypes.Role).Select(x => x.Value)
+                        Roles = context.User.FindAll(ClaimTypes.Role).Select(x => x.Value),
+                        EmailVerified = Convert.ToBoolean(context.User.FindFirstValue(AppClaim.EmailVerified))
                     }
                 }
             });

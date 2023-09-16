@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace Eaze.Web.Controllers;
 
 [Authorize]
-public sealed class DashboardController : Controller
+public sealed class ProfileController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Edit()
     {
-        return Inertia.Render("Dashboard/Index");
+        return Inertia.Render("Profile/Edit");
     }
 }

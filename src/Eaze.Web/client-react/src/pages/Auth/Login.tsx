@@ -4,8 +4,8 @@ import Label from '../../components/forms/Label';
 import Input from '../../components/forms/Input';
 import Error from '../../components/forms/Error';
 import { useEffect } from 'react';
-import Button from '../../components/forms/Button';
 import Checkbox from '../../components/forms/Checkbox';
+import Button from '../../components/Button';
 
 const Login = () => {
   const { data, setData, post, processing, errors, reset } = useForm({

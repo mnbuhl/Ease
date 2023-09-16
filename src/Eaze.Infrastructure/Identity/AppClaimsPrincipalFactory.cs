@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Eaze.Domain.Constants;
 using Eaze.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -17,6 +18,8 @@ public sealed class AppClaimsPrincipalFactory : UserClaimsPrincipalFactory<User>
         var identity = await base.GenerateClaimsAsync(user);
 
         List<Claim> claims = new();
+
+        claims.Add(new Claim(AppClaim.EmailVerified, user.EmailConfirmed.ToString().ToLower()));
 
         if (user.Name is not null)
         {

@@ -1,9 +1,9 @@
 import { InputHTMLAttributes, forwardRef, useRef, useImperativeHandle, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   isFocused?: boolean;
-}
+};
 
 const Input = forwardRef(({ isFocused, className, type = 'text', ...props }: Props, ref) => {
   const localRef = useRef<HTMLInputElement>(null);

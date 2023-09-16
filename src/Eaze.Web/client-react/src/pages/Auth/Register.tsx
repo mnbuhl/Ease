@@ -4,7 +4,7 @@ import { FormEventHandler, useEffect } from 'react';
 import Label from '../../components/forms/Label';
 import Input from '../../components/forms/Input';
 import Error from '../../components/forms/Error';
-import Button from '../../components/forms/Button';
+import Button from '../../components/Button';
 
 const Register = () => {
   const { data, setData, post, processing, errors, reset } = useForm({
