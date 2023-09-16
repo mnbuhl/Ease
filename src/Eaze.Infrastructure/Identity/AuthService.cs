@@ -1,6 +1,6 @@
 ﻿using System.Security.Authentication;
 using Eaze.Application.Common.Interfaces;
-using Eaze.Application.Features.Auth;
+using Eaze.Application.Requests;
 using Eaze.Domain.Models;
 using FluentValidation;
 using FluentValidation.Results;

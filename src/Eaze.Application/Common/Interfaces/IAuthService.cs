@@ -1,4 +1,4 @@
-﻿using Eaze.Application.Features.Auth;
+﻿using Eaze.Application.Requests;
 using Eaze.Domain.Models;
 
 namespace Eaze.Application.Common.Interfaces;

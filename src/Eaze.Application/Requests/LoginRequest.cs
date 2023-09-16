@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Eaze.Application.Features.Auth;
+namespace Eaze.Application.Requests;
 
 public record LoginRequest(string Email, string Password, bool Remember);
 

@@ -1,5 +1,5 @@
 ﻿using Eaze.Application.Common.Interfaces;
-using Eaze.Application.Features.Auth;
+using Eaze.Application.Requests;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

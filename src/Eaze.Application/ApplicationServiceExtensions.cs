@@ -1,4 +1,4 @@
-﻿using Eaze.Application.Features.Auth;
+﻿using Eaze.Application.Requests;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;

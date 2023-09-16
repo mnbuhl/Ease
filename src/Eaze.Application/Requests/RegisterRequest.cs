@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Eaze.Application.Features.Auth;
+namespace Eaze.Application.Requests;
 
 public record RegisterRequest(string Email, string Name, string Password, string PasswordConfirmation);
 
