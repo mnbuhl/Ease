@@ -15,12 +15,12 @@ public sealed class AppClaimsPrincipalFactory(UserManager<User> userManager, IOp
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Email, user.Email!),
         };
 
-        if (user.Username is not null)
+        if (user.UserName is not null)
         {
-            claims.Add(new Claim(ClaimTypes.Name, user.Username));
+            claims.Add(new Claim(ClaimTypes.Name, user.UserName));
         }
 
         if (user.Name is not null)

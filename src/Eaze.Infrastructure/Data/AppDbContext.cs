@@ -1,19 +1,16 @@
 ﻿using Eaze.Domain.Models;
-using Eaze.Domain.Models.Authorization;
 using Eaze.Infrastructure.Data.Interceptors;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Eaze.Infrastructure.Data;
 
-public sealed class AppDbContext : DbContext
+public sealed class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
-
-    public DbSet<User> Users => Set<User>();
-    public DbSet<Role> Roles => Set<Role>();
-    public DbSet<UserClaim> Claims => Set<UserClaim>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -27,5 +24,16 @@ public sealed class AppDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+
+        // Remove AspNet prefix from tables
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            string? table = entityType.GetTableName();
+
+            if (table is not null && table.StartsWith("AspNet"))
+            {
+                entityType.SetTableName(table[6..]);
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ const Login = ({ status, canResetPassword }: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    post('auth/login');
+    post('/auth/login');
   };
 
   return (
