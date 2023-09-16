@@ -76,6 +76,8 @@ public sealed class AuthController(IAuthService authService, IEmailSender emailS
 
         Inertia.Share("toast", new Toast("Thank you for confirming your email address.", ToastType.Success));
 
-        return RedirectToAction("Index", "Dashboard");
+        bool isAuthenticated = User.Identity?.IsAuthenticated == true;
+
+        return RedirectToAction("Index", isAuthenticated ? "Dashboard" : "Home");
     }
 }
