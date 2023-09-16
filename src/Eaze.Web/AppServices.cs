@@ -1,4 +1,5 @@
-﻿using Eaze.Infrastructure.Data;
+﻿using Eaze.Application;
+using Eaze.Infrastructure.Data;
 using Eaze.Infrastructure.Identity;
 using InertiaCore.Extensions;
 
@@ -6,13 +7,10 @@ namespace Eaze.Web;
 
 public static class AppServices
 {
-    public static void AddApplicationServices(this WebApplicationBuilder builder)
+    public static void ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddInertia(options =>
-        {
-            options.SsrEnabled = false;
-        });
-        
+        builder.Services.AddInertia(options => { options.SsrEnabled = false; });
+
         builder.Services.AddViteHelper(options =>
         {
             options.PublicDirectory = "wwwroot";
@@ -20,9 +18,10 @@ public static class AppServices
             options.HotFile = "hot";
             options.ManifestFilename = "manifest.json";
         });
-        
+
         builder.Services.AddControllersWithViews();
 
+        builder.AddApplicationServices();
         builder.AddDataServices();
         builder.AddIdentityServices();
     }

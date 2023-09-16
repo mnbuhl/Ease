@@ -5,18 +5,36 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaze.Web.Controllers;
 
-public sealed class AuthController(IAuthService authService) : BaseController
+public sealed class AuthController(IAuthService authService) : Controller
 {
     public IActionResult Login()
     {
         return Inertia.Render("Auth/Login");
     }
 
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+    [HttpPost]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        await authService.Login(loginRequest);
+        await authService.Login(request);
 
-        return LocalRedirect("/");
+        return RedirectToAction("Index", "Dashboard");
+    }
+
+    public IActionResult Register()
+    {
+        return Inertia.Render("Auth/Register");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return Register();
+        }
+
+        await authService.Register(request);
+
+        return RedirectToAction("Index", "Dashboard");
     }
 }

@@ -1,26 +1,53 @@
-﻿using Eaze.Application.Common.Interfaces;
+﻿using System.Security.Authentication;
+using Eaze.Application.Common.Interfaces;
 using Eaze.Application.Features.Auth;
 using Eaze.Domain.Models;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
 
 namespace Eaze.Infrastructure.Identity;
 
 public sealed class AuthService(UserManager<User> userManager, SignInManager<User> signInManager) : IAuthService
 {
-    public async Task<User> Login(LoginRequest loginRequest)
+    public async Task<User> Login(LoginRequest request)
     {
-        var user = await userManager.FindByEmailAsync(loginRequest.Email);
+        var user = await userManager.FindByEmailAsync(request.Email);
 
         if (user == null)
         {
-            throw new Exception("Invalid email or password");
+            throw new AuthenticationException("Invalid email or password");
         }
 
-        var result = await signInManager.CheckPasswordSignInAsync(user, loginRequest.Password, false);
+        var result = await signInManager.PasswordSignInAsync(user, request.Password, request.Remember, false);
 
         if (!result.Succeeded)
         {
-            throw new Exception("Invalid email or password");
+            throw new AuthenticationException("Invalid email or password");
+        }
+
+        return user;
+    }
+
+    public async Task<User> Register(RegisterRequest request)
+    {
+        var user = new User
+        {
+            UserName = request.Email,
+            Email = request.Email,
+            Name = request.Name,
+        };
+
+        var result = await userManager.CreateAsync(user, request.Password);
+
+        if (!result.Succeeded)
+        {
+            if (result.Errors.Any())
+            {
+                throw new ValidationException(result.Errors.Select(x => new ValidationFailure(x.Code, x.Description)));
+            }
+
+            throw new AuthenticationException("Could not create user");
         }
 
         return user;

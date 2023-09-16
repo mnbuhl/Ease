@@ -93,7 +93,7 @@ const Login = ({ status, canResetPassword }: Props) => {
             </Link>
           )}
 
-          <Button variant="secondary" type="submit" className="ml-4" loading={processing}>
+          <Button variant="primary" type="submit" className="ml-4" loading={processing}>
             Log in
           </Button>
         </div>
