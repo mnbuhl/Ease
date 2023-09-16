@@ -52,4 +52,9 @@ public sealed class AuthService(UserManager<User> userManager, SignInManager<Use
 
         return user;
     }
+    
+    public async Task Logout()
+    {
+        await signInManager.SignOutAsync();
+    }
 }

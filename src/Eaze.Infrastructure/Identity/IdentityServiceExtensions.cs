@@ -27,8 +27,8 @@ public static class IdentityServiceExtensions
                 };
             })
             .AddDefaultTokenProviders()
-            .AddEntityFrameworkStores<AppDbContext>();
-        //.AddClaimsPrincipalFactory<AppClaimsPrincipalFactory>();
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddClaimsPrincipalFactory<AppClaimsPrincipalFactory>();
 
         builder.Services.ConfigureApplicationCookie(options =>
         {

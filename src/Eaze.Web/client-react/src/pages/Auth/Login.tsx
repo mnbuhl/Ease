@@ -7,12 +7,7 @@ import { useEffect } from 'react';
 import Button from '../../components/forms/Button';
 import Checkbox from '../../components/forms/Checkbox';
 
-interface Props {
-  status: string;
-  canResetPassword: boolean;
-}
-
-const Login = ({ status, canResetPassword }: Props) => {
+const Login = () => {
   const { data, setData, post, processing, errors, reset } = useForm({
     email: '',
     password: '',
@@ -33,8 +28,6 @@ const Login = ({ status, canResetPassword }: Props) => {
   return (
     <>
       <Head title="Log in" />
-
-      {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
       <form onSubmit={handleSubmit}>
         <div>
@@ -84,14 +77,12 @@ const Login = ({ status, canResetPassword }: Props) => {
         </div>
 
         <div className="flex items-center justify-end mt-4">
-          {canResetPassword && (
-            <Link
-              href={'/auth/forgot-password'}
-              className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-            >
-              Forgot your password?
-            </Link>
-          )}
+          <Link
+            href={'/auth/forgot-password'}
+            className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+          >
+            Forgot your password?
+          </Link>
 
           <Button variant="primary" type="submit" className="ml-4" loading={processing}>
             Log in

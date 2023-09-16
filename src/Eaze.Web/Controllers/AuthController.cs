@@ -1,6 +1,7 @@
 ﻿using Eaze.Application.Common.Interfaces;
 using Eaze.Application.Features.Auth;
 using InertiaCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eaze.Web.Controllers;
@@ -9,6 +10,11 @@ public sealed class AuthController(IAuthService authService) : Controller
 {
     public IActionResult Login()
     {
+        if (User.Identity?.IsAuthenticated == true)
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+        
         return Inertia.Render("Auth/Login");
     }
 
@@ -22,6 +28,11 @@ public sealed class AuthController(IAuthService authService) : Controller
 
     public IActionResult Register()
     {
+        if (User.Identity?.IsAuthenticated == true)
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+        
         return Inertia.Render("Auth/Register");
     }
 
@@ -34,7 +45,17 @@ public sealed class AuthController(IAuthService authService) : Controller
         }
 
         await authService.Register(request);
+        await authService.Login(new LoginRequest(request.Email, request.Password, true));
 
         return RedirectToAction("Index", "Dashboard");
+    }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> Logout()
+    {
+        await authService.Logout();
+
+        return RedirectToAction("Index", "Home");
     }
 }

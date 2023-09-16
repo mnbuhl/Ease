@@ -1,4 +1,5 @@
-﻿using InertiaCore;
+﻿using System.Security.Claims;
+using InertiaCore;
 
 namespace Eaze.Web.Middleware;
 
@@ -8,7 +9,21 @@ public sealed class InertiaMiddleware(RequestDelegate next)
     {
         var sharedData = new Dictionary<string, object?>();
 
-        sharedData.TryAdd("auth", new { Id = Guid.NewGuid(), Email = "test@test.com" });
+        if (context.User.Identity?.IsAuthenticated == true)
+        {
+            sharedData.TryAdd("auth", new Dictionary<string, object?>
+            {
+                {
+                    "user", new
+                    {
+                        Id = context.User.FindFirstValue(ClaimTypes.NameIdentifier),
+                        Email = context.User.FindFirstValue(ClaimTypes.Email),
+                        Name = context.User.FindFirstValue(ClaimTypes.GivenName),
+                        Roles = context.User.FindAll(ClaimTypes.Role).Select(x => x.Value)
+                    }
+                }
+            });
+        }
 
         Inertia.Share(sharedData);
         
