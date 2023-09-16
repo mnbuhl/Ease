@@ -1,4 +1,5 @@
-﻿using Eaze.Application.Requests;
+﻿using Eaze.Application.Common.Interfaces;
+using Eaze.Application.Requests;
 using Eaze.Domain.Models;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Eaze.Web.Controllers;
 
 [Authorize]
-public sealed class ProfileController(UserManager<User> userManager, SignInManager<User> signInManager) : Controller
+public sealed class ProfileController(UserManager<User> userManager, SignInManager<User> signInManager,
+    IAuthService authService) : Controller
 {
     public IActionResult Edit()
     {
@@ -32,6 +34,8 @@ public sealed class ProfileController(UserManager<User> userManager, SignInManag
 
         user.Name = request.Name;
 
+        bool emailChanged = false;
+
         if (user.Email != request.Email)
         {
             var emailExists = await userManager.FindByEmailAsync(request.Email) != null;
@@ -45,10 +49,17 @@ public sealed class ProfileController(UserManager<User> userManager, SignInManag
             user.Email = request.Email;
             user.EmailConfirmed = false;
 
-            // TODO: send confirmation email
+            emailChanged = true;
         }
 
         await userManager.UpdateAsync(user);
+
+        if (emailChanged)
+        {
+            string url = Url.Action("ConfirmEmail", "Auth", new { userId = user.Id }, Request.Scheme)!;
+            await authService.GenerateAndSendEmailConfirmationToken(user, url);
+        }
+        
         await signInManager.SignInAsync(user, true);
         
         return RedirectToAction("Edit");

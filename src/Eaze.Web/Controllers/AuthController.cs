@@ -1,6 +1,5 @@
 ﻿using Eaze.Application.Common.Interfaces;
 using Eaze.Application.Common.Models;
-using Eaze.Application.Mail;
 using Eaze.Application.Requests;
 using Eaze.Domain.Constants;
 using InertiaCore;
@@ -49,11 +48,8 @@ public sealed class AuthController(IAuthService authService, IEmailSender emailS
 
         var user = await authService.Register(request);
 
-        var token = await authService.GenerateEmailConfirmationToken(user);
-
-        var url = Url.Action("ConfirmEmail", "Auth", new { userId = user.Id, token }, Request.Scheme)!;
-
-        await emailSender.SendAsync(new ConfirmEmail(user, url));
+        string url = Url.Action("ConfirmEmail", "Auth", new { userId = user.Id }, Request.Scheme)!;
+        await authService.GenerateAndSendEmailConfirmationToken(user, url);
         
         await authService.Login(new LoginRequest(request.Email, request.Password, true));
 

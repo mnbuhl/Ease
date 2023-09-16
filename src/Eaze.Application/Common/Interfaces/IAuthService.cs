@@ -9,6 +9,6 @@ public interface IAuthService
     Task<User> Register(RegisterRequest request);
     Task Logout();
     Task<string> GeneratePasswordResetToken(User user);
-    Task<string> GenerateEmailConfirmationToken(User user);
+    Task GenerateAndSendEmailConfirmationToken(User user, string url);
     Task<User> ConfirmEmail(Guid userId, string token);
 }

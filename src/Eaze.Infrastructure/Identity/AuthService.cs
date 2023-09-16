@@ -1,6 +1,7 @@
 ﻿using System.Security.Authentication;
 using System.Web;
 using Eaze.Application.Common.Interfaces;
+using Eaze.Application.Mail;
 using Eaze.Application.Requests;
 using Eaze.Domain.Models;
 using FluentValidation;
@@ -60,9 +61,13 @@ public sealed class AuthService(UserManager<User> userManager, SignInManager<Use
         return await userManager.GeneratePasswordResetTokenAsync(user);
     }
 
-    public async Task<string> GenerateEmailConfirmationToken(User user)
+    public async Task GenerateAndSendEmailConfirmationToken(User user, string url)
     {
-        return HttpUtility.UrlEncode(await userManager.GenerateEmailConfirmationTokenAsync(user));
+        var token = HttpUtility.UrlEncode(await userManager.GenerateEmailConfirmationTokenAsync(user));
+
+        var confirmUrl = $"{url}&token={token}";
+
+        await emailSender.SendAsync(new ConfirmEmail(user, confirmUrl));
     }
 
     public async Task<User> ConfirmEmail(Guid userId, string token)
@@ -74,7 +79,7 @@ public sealed class AuthService(UserManager<User> userManager, SignInManager<Use
             throw new AuthenticationException("Invalid user");
         }
 
-        var result = await userManager.ConfirmEmailAsync(user, HttpUtility.UrlDecode(token));
+        var result = await userManager.ConfirmEmailAsync(user, token);
 
         if (!result.Succeeded)
         {
