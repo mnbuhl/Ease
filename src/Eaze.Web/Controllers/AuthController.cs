@@ -1,4 +1,5 @@
 ﻿using Eaze.Application.Common.Interfaces;
+using Eaze.Application.Mail;
 using Eaze.Application.Requests;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaze.Web.Controllers;
 
-public sealed class AuthController(IAuthService authService) : Controller
+public sealed class AuthController(IAuthService authService, IEmailSender emailSender) : Controller
 {
     public IActionResult Login()
     {
@@ -44,7 +45,15 @@ public sealed class AuthController(IAuthService authService) : Controller
             return Register();
         }
 
-        await authService.Register(request);
+        var url = Url.Action("ConfirmEmail", "Auth", new { userId = Guid.NewGuid(), token = "test" }, Request.Scheme);
+
+        var user = await authService.Register(request);
+
+        var token = await authService.GenerateEmailConfirmationToken(user);
+
+        await emailSender.SendAsync(new ConfirmEmail(user,
+            Url.Action("ConfirmEmail", "Auth", new { userId = user.Id, token }, Request.Scheme)!));
+        
         await authService.Login(new LoginRequest(request.Email, request.Password, true));
 
         return RedirectToAction("Index", "Dashboard");
@@ -57,5 +66,13 @@ public sealed class AuthController(IAuthService authService) : Controller
         await authService.Logout();
 
         return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ConfirmEmail(Guid userId, string token)
+    {
+        var user = await authService.ConfirmEmail(userId, token);
+
+        return Inertia.Render("Auth/ConfirmEmail", new { user.Name });
     }
 }

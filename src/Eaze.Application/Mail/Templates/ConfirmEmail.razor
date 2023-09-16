@@ -1,0 +1,15 @@
+﻿Hello @Name,
+
+Click <a href="@CallbackUrl">here</a> to go to confirm your email.
+
+If the link doesn't work, copy and paste the following link into your browser: @CallbackUrl
+
+@code {
+
+    [Parameter]
+    public string? Name { get; set; }
+
+    [Parameter]
+    public string? CallbackUrl { get; set; }
+
+}

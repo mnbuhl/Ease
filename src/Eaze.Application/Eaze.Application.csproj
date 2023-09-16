@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
@@ -15,7 +15,13 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="BlazorTemplater" Version="1.5.1"/>
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <UpToDateCheckInput Remove="Mail\ForgotPasswordTemplate.razor"/>
     </ItemGroup>
 
 

@@ -1,6 +1,7 @@
 ﻿using Eaze.Application;
 using Eaze.Infrastructure.Data;
 using Eaze.Infrastructure.Identity;
+using Eaze.Infrastructure.Mailing;
 using InertiaCore.Extensions;
 
 namespace Eaze.Web;
@@ -24,5 +25,6 @@ public static class AppServices
         builder.AddApplicationServices();
         builder.AddDataServices();
         builder.AddIdentityServices();
+        builder.AddEmailServices();
     }
 }
