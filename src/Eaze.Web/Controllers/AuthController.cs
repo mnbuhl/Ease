@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaze.Web.Controllers;
 
-public sealed class AuthController(IAuthService authService, IEmailSender emailSender) : Controller
+public sealed class AuthController(IAuthService authService, ILogger<AuthController> logger) : Controller
 {
     public IActionResult Login()
     {
@@ -23,7 +23,17 @@ public sealed class AuthController(IAuthService authService, IEmailSender emailS
     [HttpPost]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        await authService.Login(request);
+        try
+        {
+            await authService.Login(request);
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("email", "Invalid email or password.");
+            ModelState.AddModelError("password", "Invalid email or password.");
+            logger.LogError(ex, "Error logging in");
+            return Login();
+        }
 
         return RedirectToAction("Index", "Dashboard");
     }
