@@ -14,7 +14,7 @@ const UpdatePasswordForm = ({ className }: Props) => {
   const passwordInput = useRef<HTMLInputElement>();
   const currentPasswordInput = useRef<HTMLInputElement>();
 
-  const { data, setData, errors, put, reset, processing, recentlySuccessful } = useForm({
+  const { data, setData, errors, patch, reset, processing, recentlySuccessful } = useForm({
     currentPassword: '',
     password: '',
     passwordConfirmation: '',
@@ -23,7 +23,7 @@ const UpdatePasswordForm = ({ className }: Props) => {
   const updatePassword: FormEventHandler = (e) => {
     e.preventDefault();
 
-    put('/auth/password', {
+    patch('/profile/password', {
       preserveScroll: true,
       onSuccess: () => reset(),
       onError: (errors) => {

@@ -37,4 +37,9 @@ public sealed class PasswordService(UserManager<User> userManager, IEmailSender 
 
         await userManager.ResetPasswordAsync(user, token, password);
     }
+
+    public async Task ChangePassword(User user, string currentPassword, string newPassword)
+    {
+        await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+    }
 }

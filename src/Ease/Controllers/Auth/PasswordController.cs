@@ -9,7 +9,7 @@ public sealed class PasswordController(IPasswordService passwordService) : BaseC
 {
     public IActionResult Forgot()
     {
-        var status = HttpContext.Session.GetString("Password.Status");
+        var status = TempData["Status"]?.ToString();
 
         return Inertia.Render("Auth/ForgotPassword",
             new { Status = status, CanResetPassword = string.IsNullOrEmpty(status) });
@@ -22,9 +22,7 @@ public sealed class PasswordController(IPasswordService passwordService) : BaseC
 
         await passwordService.SendPasswordReset(request.Email, url);
 
-        HttpContext.Session.SetString("Password.Status", "Password reset link sent");
-
-        return Back();
+        return Back(new { Status = "Password reset link sent" });
     }
 
     public IActionResult Reset(string email, string token)

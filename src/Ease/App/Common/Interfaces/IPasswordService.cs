@@ -6,4 +6,5 @@ public interface IPasswordService
 {
     Task<User?> SendPasswordReset(string email, string url);
     Task ResetPassword(string email, string token, string password);
+    Task ChangePassword(User user, string currentPassword, string newPassword);
 }

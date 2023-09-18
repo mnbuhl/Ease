@@ -10,11 +10,11 @@ namespace Ease.Controllers;
 
 [Authorize]
 public sealed class ProfileController(UserManager<User> userManager, SignInManager<User> signInManager,
-    IVerifyEmailService verifyEmailService) : BaseController
+    IVerifyEmailService verifyEmailService, IPasswordService passwordService) : BaseController
 {
     public IActionResult Edit()
     {
-        return Inertia.Render("Profile/Edit", new { MustVerifyEmail = true });
+        return Inertia.Render("Profile/Edit", new { MustVerifyEmail = true, Status = TempData["Status"] });
     }
 
     [HttpPatch]
@@ -63,5 +63,33 @@ public sealed class ProfileController(UserManager<User> userManager, SignInManag
         await signInManager.SignInAsync(user, true);
 
         return Back();
+    }
+
+    [HttpPatch]
+    public async Task<IActionResult> Password([FromBody] NewPasswordRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return Edit();
+        }
+
+        var user = await userManager.GetUserAsync(User);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var result = await signInManager.CheckPasswordSignInAsync(user, request.CurrentPassword, false);
+
+        if (!result.Succeeded)
+        {
+            ModelState.AddModelError("currentPassword", "Current password is incorrect");
+            return Edit();
+        }
+
+        await passwordService.ChangePassword(user, request.CurrentPassword, request.Password);
+
+        return Back(new { Status = "Password Changed" });
     }
 }
