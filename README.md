@@ -1,6 +1,6 @@
-# Eaze
+# Ease
 
-Eaze is a project starting point for building web applications using React or Vue, but without the hassle of 
+Ease is a project starting point for building web applications using React or Vue, but without the hassle of
 frontend state management thanks to Inertia.js.
 
 The template is pre-configured with ASP.NET Core Identity, Entity Framework Core, 
@@ -11,7 +11,7 @@ The frontend is built with Tailwind CSS and Vite, and is ready to be extended wi
 The backend template has all configuration directly implemented in the template, so you don't need to perform gymnastics
 to configure your project.
 
-Eaze is heavily inspired and borrows (<sup><sub>literally steals...</sub></sup>) a lot
+Ease is heavily inspired and borrows (<sup><sub>literally steals...</sub></sup>) a lot
 from [Laravel Breeze](https://github.com/laravel/breeze).
 
 ## TODO
@@ -34,14 +34,14 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 Install the template from NuGet:
 
 ```bash
-dotnet new -i Eaze.Templates
+dotnet new -i Ease.Templates
 ```
 
 Create a new project:
 
 ```bash
-dotnet new eaze-react -n MyProject
-dotnet new eaze-vue -n MyProject
+dotnet new ease-react -n MyProject
+dotnet new ease-vue -n MyProject
 ```
 
 ### Features
