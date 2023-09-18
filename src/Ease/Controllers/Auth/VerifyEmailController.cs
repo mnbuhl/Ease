@@ -15,7 +15,7 @@ public sealed class VerifyEmailController(IVerifyEmailService verifyEmailService
     [Authorize]
     public IActionResult Index()
     {
-        var status = HttpContext.Session.GetString("Status");
+        var status = HttpContext.Session.GetString("VerifyEmail.Status");
 
         return Inertia.Render("Auth/VerifyEmail",
             new { Status = status, CanVerifyEmail = string.IsNullOrEmpty(status) });
@@ -48,7 +48,7 @@ public sealed class VerifyEmailController(IVerifyEmailService verifyEmailService
 
         await verifyEmailService.SendEmailConfirmation(user, url);
 
-        HttpContext.Session.SetString("Status", "verification-link-sent");
+        HttpContext.Session.SetString("VerifyEmail.Status", "verification-link-sent");
 
         return Back();
     }

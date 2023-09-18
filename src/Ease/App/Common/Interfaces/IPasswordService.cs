@@ -4,5 +4,6 @@ namespace Ease.App.Common.Interfaces;
 
 public interface IPasswordService
 {
-    Task SendPasswordReset(User user, string url);
+    Task<User?> SendPasswordReset(string email, string url);
+    Task ResetPassword(string email, string token, string password);
 }

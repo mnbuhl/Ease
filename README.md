@@ -28,6 +28,7 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 - [ ] : Add CI/CD
 - [ ] : Use tailwind theming for easier customization
 - [ ] : Configure default email layout
+- [ ] : JavaScript variants?
 
 ### Getting Started
 
