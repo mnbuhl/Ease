@@ -1,7 +1,5 @@
 ﻿using System.Security.Claims;
-using Ease.App.Common.Helpers;
 using Ease.App.Common.Interfaces;
-using Ease.App.Constants;
 using Ease.App.Models;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
@@ -27,7 +25,7 @@ public sealed class VerifyEmailController(IVerifyEmailService verifyEmailService
     {
         await verifyEmailService.ConfirmEmail(userId, token);
 
-        Inertia.Share("toast", new Toast("Thank you for confirming your email address.", ToastType.Success));
+        TempData["Status"] = "email-confirmed";
 
         bool isAuthenticated = User.Identity?.IsAuthenticated == true;
 

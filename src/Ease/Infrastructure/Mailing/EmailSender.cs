@@ -32,8 +32,6 @@ public sealed class EmailSender(ILogger<EmailSender> logger) : IEmailSender
 
     private void LogEmail(Mailable mailable)
     {
-        logger.LogInformation("To: {To}", mailable.To);
-        logger.LogInformation("Subject: {Subject}", mailable.Subject);
-        logger.LogInformation("Body: {Body}", mailable.Body);
+        logger.LogInformation("To: {To}\nSubject: {Subject}\n\n {Body}", mailable.To, mailable.Subject, mailable.Body);
     }
 }

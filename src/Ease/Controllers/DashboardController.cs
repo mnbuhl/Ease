@@ -9,6 +9,8 @@ public sealed class DashboardController : BaseController
 {
     public IActionResult Index()
     {
-        return Inertia.Render("Dashboard/Index");
+        var status = TempData["Status"]?.ToString();
+
+        return Inertia.Render("Dashboard/Index", new { Status = status });
     }
 }
