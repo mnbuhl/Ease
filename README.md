@@ -8,7 +8,11 @@ and an opinionated architecture to get you up and running quickly.
 
 The frontend is built with Tailwind CSS and Vite, and is ready to be extended with your own components.
 
-Eaze is heavily inspired and borrows a lot from [Laravel Breeze](https://github.com/laravel/breeze) in the frontend.
+The backend template has all configuration directly implemented in the template, so you don't need to perform gymnastics
+to configure your project.
+
+Eaze is heavily inspired and borrows (<sup><sub>literally steals...</sub></sup>) a lot
+from [Laravel Breeze](https://github.com/laravel/breeze).
 
 ## TODO
 
@@ -21,6 +25,8 @@ Eaze is heavily inspired and borrows a lot from [Laravel Breeze](https://github.
 - [ ] : Add documentation
 - [ ] : Add Docker support
 - [ ] : Add CI/CD
+- [ ] : Use tailwind theming for easier customization
+- [ ] : Configure default email layout
 
 ### Getting Started
 
@@ -48,11 +54,6 @@ dotnet new eaze-vue -n MyProject
 - Tailwind CSS
 - Vite
 - TypeScript
-
-### Architecture
-
-The template is pre-configured with an opinionated architecture like Clean Architecture from jasontaylordev.
-See [this blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information.
 
 ### Disclaimer
 
