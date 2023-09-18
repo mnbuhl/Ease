@@ -1,4 +1,4 @@
-﻿using Eaze.App.Models.Contracts;
+﻿using Eaze.App.Common.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 

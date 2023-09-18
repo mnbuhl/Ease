@@ -25,6 +25,8 @@ public static class RequestPipeline
         app.UseAuthentication();
         app.UseAuthorization();
 
+        app.UseSession();
+        
         app.UseInertiaSharedData();
 
         app.MapControllerRoute(

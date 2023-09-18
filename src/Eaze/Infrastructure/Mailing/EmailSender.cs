@@ -1,5 +1,5 @@
-﻿using Eaze.App.Helpers;
-using Eaze.App.Interfaces;
+﻿using Eaze.App.Common.Helpers;
+using Eaze.App.Common.Interfaces;
 
 namespace Eaze.Infrastructure.Mailing;
 

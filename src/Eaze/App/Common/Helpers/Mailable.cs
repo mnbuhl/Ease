@@ -1,4 +1,4 @@
-﻿namespace Eaze.App.Helpers;
+﻿namespace Eaze.App.Common.Helpers;
 
 public abstract class Mailable
 {

@@ -1,6 +1,6 @@
-﻿using Eaze.App.Helpers;
+﻿using Eaze.App.Common.Helpers;
 
-namespace Eaze.App.Interfaces;
+namespace Eaze.App.Common.Interfaces;
 
 public interface IEmailSender
 {

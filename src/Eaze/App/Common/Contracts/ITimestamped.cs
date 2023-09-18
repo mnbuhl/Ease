@@ -1,4 +1,4 @@
-﻿namespace Eaze.App.Models.Contracts;
+﻿namespace Eaze.App.Common.Contracts;
 
 public interface ITimestamped
 {

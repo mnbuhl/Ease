@@ -1,5 +1,5 @@
 ﻿using BlazorTemplater;
-using Eaze.App.Helpers;
+using Eaze.App.Common.Helpers;
 using Eaze.App.Mail.Layouts;
 using Eaze.App.Models;
 

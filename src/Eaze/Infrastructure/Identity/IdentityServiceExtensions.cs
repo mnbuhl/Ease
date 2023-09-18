@@ -1,4 +1,4 @@
-﻿using Eaze.App.Interfaces;
+﻿using Eaze.App.Common.Interfaces;
 using Eaze.App.Models;
 using Eaze.Infrastructure.Database;
 using Microsoft.AspNetCore.Identity;
@@ -35,6 +35,8 @@ public static class IdentityServiceExtensions
         });
 
         builder.Services.AddScoped<IAuthService, AuthService>();
+        builder.Services.AddScoped<IVerifyEmailService, VerifyEmailService>();
+        builder.Services.AddScoped<IPasswordService, PasswordService>();
 
         return builder;
     }

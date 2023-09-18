@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Eaze.App.Models.Contracts;
+using Eaze.App.Common.Contracts;
 using Microsoft.AspNetCore.Identity;
 
 namespace Eaze.App.Models;

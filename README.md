@@ -21,6 +21,7 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 - [ ] : Add SSR support
 - [ ] : Publish to NuGet
 - [ ] : Add Vue support
+- [ ] : Add landing page
 - [ ] : Add tests
 - [ ] : Add documentation
 - [ ] : Add Docker support

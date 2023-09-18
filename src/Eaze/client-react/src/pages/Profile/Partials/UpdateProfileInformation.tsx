@@ -1,10 +1,10 @@
-import { Link, useForm, usePage } from '@inertiajs/react';
-import { FormEventHandler } from 'react';
-import { PageProps } from '../../../page-props';
+import {Link, useForm, usePage} from '@inertiajs/react';
+import {FormEventHandler} from 'react';
+import {PageProps} from '../../../page-props';
 import Label from '../../../components/forms/Label';
 import Input from '../../../components/forms/Input';
 import Error from '../../../components/forms/Error';
-import { Transition } from '@headlessui/react';
+import {Transition} from '@headlessui/react';
 import Button from '../../../components/Button';
 
 type Props = {
@@ -75,9 +75,8 @@ const UpdateProfileInformationForm = ({ mustVerifyEmail, status, className }: Pr
         {mustVerifyEmail && !user.emailVerified && (
           <div>
             <p className="text-sm mt-2 text-gray-800 dark:text-gray-200">
-              Your email address is unverified.
-              <Link
-                href={'/auth/verification-email'}
+              Your email address is unverified. {' '}
+              <Link href={'/verify-email/resend'}
                 method="post"
                 as="button"
                 className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"

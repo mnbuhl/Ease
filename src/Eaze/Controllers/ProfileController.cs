@@ -1,4 +1,4 @@
-﻿using Eaze.App.Interfaces;
+﻿using Eaze.App.Common.Interfaces;
 using Eaze.App.Models;
 using Eaze.App.Requests;
 using InertiaCore;
@@ -10,11 +10,11 @@ namespace Eaze.Controllers;
 
 [Authorize]
 public sealed class ProfileController(UserManager<User> userManager, SignInManager<User> signInManager,
-    IAuthService authService) : Controller
+    IVerifyEmailService verifyEmailService) : BaseController
 {
     public IActionResult Edit()
     {
-        return Inertia.Render("Profile/Edit");
+        return Inertia.Render("Profile/Edit", new { MustVerifyEmail = true });
     }
 
     [HttpPatch]
@@ -56,12 +56,12 @@ public sealed class ProfileController(UserManager<User> userManager, SignInManag
 
         if (emailChanged)
         {
-            string url = Url.Action("ConfirmEmail", "Auth", new { userId = user.Id }, Request.Scheme)!;
-            await authService.GenerateAndSendEmailConfirmationToken(user, url);
+            string url = Url.Action("Confirm", "VerifyEmail", new { userId = user.Id }, Request.Scheme)!;
+            await verifyEmailService.SendEmailConfirmation(user, url);
         }
         
         await signInManager.SignInAsync(user, true);
-        
-        return RedirectToAction("Edit");
+
+        return Back();
     }
 }

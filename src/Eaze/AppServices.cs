@@ -20,7 +20,10 @@ public static class AppServices
             options.ManifestFilename = "manifest.json";
         });
 
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews()
+            .AddSessionStateTempDataProvider();
+
+        builder.Services.AddSession();
 
         builder.AddApplicationServices();
         builder.AddDataServices();

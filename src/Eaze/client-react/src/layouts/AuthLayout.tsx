@@ -1,8 +1,8 @@
-import { Link, usePage } from '@inertiajs/react';
-import { PropsWithChildren, ReactNode, useState } from 'react';
-import { PageProps } from '../page-props';
+import {Link, usePage} from '@inertiajs/react';
+import {PropsWithChildren, ReactNode, useState} from 'react';
+import {PageProps} from '../page-props';
 import ApplicationLogo from '../assets/ApplicationLogo';
-import { isCurrentRoute } from '../util/route';
+import {isCurrentRoute} from '../util/route';
 import NavLink from '../components/NavLink';
 import Dropdown from '../components/Dropdown';
 import Toast from '../components/Toast';
@@ -61,7 +61,7 @@ const AuthLayout = ({ children, header }: PropsWithChildren<{ header?: ReactNode
                   <Dropdown.Content>
                     <Dropdown.Link href={'/profile/edit'}>Profile</Dropdown.Link>
                     <Dropdown.Link href={'/auth/logout'} method="post" as="button">
-                      Log Out
+                      Log out
                     </Dropdown.Link>
                   </Dropdown.Content>
                 </Dropdown>
@@ -112,7 +112,7 @@ const AuthLayout = ({ children, header }: PropsWithChildren<{ header?: ReactNode
             <div className="mt-3 space-y-1">
               <NavLink href={'/profile/edit'}>Profile</NavLink>
               <NavLink method="post" href={'/auth/logout'} as="button">
-                Log Out
+                Log out
               </NavLink>
             </div>
           </div>

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Eaze.Controllers;
 
 [Authorize]
-public sealed class DashboardController : Controller
+public sealed class DashboardController : BaseController
 {
     public IActionResult Index()
     {

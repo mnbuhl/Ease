@@ -1,9 +1,9 @@
-import { Head, Link, useForm } from '@inertiajs/react';
+import {Head, Link, useForm} from '@inertiajs/react';
 import GuestLayout from '../../layouts/GuestLayout';
 import Label from '../../components/forms/Label';
 import Input from '../../components/forms/Input';
 import Error from '../../components/forms/Error';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import Checkbox from '../../components/forms/Checkbox';
 import Button from '../../components/Button';
 
@@ -78,7 +78,7 @@ const Login = () => {
 
         <div className="flex items-center justify-end mt-4">
           <Link
-            href={'/auth/forgot-password'}
+              href={'/password/forgot'}
             className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
           >
             Forgot your password?

@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 
-namespace Eaze.App.Models.Contracts;
+namespace Eaze.App.Common.Contracts;
 
 public abstract class BaseEntity<TId> : IEntity<TId> where TId : IComparable<TId>
 {
