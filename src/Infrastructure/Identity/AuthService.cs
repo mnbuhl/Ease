@@ -1,14 +1,14 @@
 ﻿using System.Security.Authentication;
 using Ease.App.Common.Interfaces;
+using Ease.App.Constants;
 using Ease.App.Models;
 using Ease.App.Requests;
-using FluentValidation;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
 
 namespace Ease.Infrastructure.Identity;
 
-public sealed class AuthService(UserManager<User> userManager, SignInManager<User> signInManager) : IAuthService
+public sealed class AuthService(UserManager<User> userManager, SignInManager<User> signInManager,
+    ILogger<AuthService> logger) : IAuthService
 {
     public async Task<User> Login(LoginRequest request)
     {
@@ -42,11 +42,15 @@ public sealed class AuthService(UserManager<User> userManager, SignInManager<Use
 
         if (!result.Succeeded)
         {
-            if (result.Errors.Any())
-            {
-                throw new ValidationException(result.Errors.Select(x => new ValidationFailure(x.Code, x.Description)));
-            }
+            logger.LogError("Could not create user {@User}: {@Errors}", user, result.Errors);
+            throw new AuthenticationException("Could not create user");
+        }
 
+        result = await userManager.AddToRoleAsync(user, Role.User);
+
+        if (!result.Succeeded)
+        {
+            logger.LogError("Could not add user {@User} to role {Role}: {@Errors}", user, Role.User, result.Errors);
             throw new AuthenticationException("Could not create user");
         }
 

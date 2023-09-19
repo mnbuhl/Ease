@@ -1,17 +1,17 @@
 # Ease
 
 Ease is a project starting point for building web applications using React or Vue, but without the hassle of
-frontend state management thanks to Inertia.js.
+frontend state management thanks to [Inertia.js](https://inertiajs.com/).
 
-The template is pre-configured with ASP.NET Core Identity, Entity Framework Core, 
-and an opinionated architecture to get you up and running quickly.
+The template is pre-configured with ASP.NET Core Identity, Entity Framework Core,
+and Inertia to get you up and running quickly.
 
 The frontend is built with Tailwind CSS and Vite, and is ready to be extended with your own components.
 
 The backend template has all configuration directly implemented in the template, so you don't need to perform gymnastics
 to configure your project.
 
-Ease is heavily inspired and borrows (<sup><sub>literally steals...</sub></sup>) a lot
+Ease is heavily inspired and borrows (<sub><sup><sub>literally steals...</sub></sup></sub>) a lot
 from [Laravel Breeze](https://github.com/laravel/breeze).
 
 ## TODO
@@ -35,14 +35,26 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 Install the template from NuGet:
 
 ```bash
-dotnet new -i Ease.Templates
+dotnet new -i Ease.Template
 ```
 
 Create a new project:
 
+React:
 ```bash
-dotnet new ease-react -n MyProject
-dotnet new ease-vue -n MyProject
+dotnet new ease -n {MyProject} --client React
+```
+
+Vue:
+
+```bash
+dotnet new ease -n {MyProject} --client Vue
+```
+
+Headless (configure your own frontend)
+
+```bash
+dotnet new ease -n {MyProject} --client Headless
 ```
 
 ### Features

@@ -1,0 +1,69 @@
+﻿{
+  "$schema": "https://json.schemastore.org/template",
+  "author": "Mikkel Buhl",
+  "identity": "Ease.Template",
+  "name": "Ease Web App",
+  "description": "A template for creating web apps with 'Ease' using MVC and Inertia with React or Vue",
+  "classifications": [
+    "Web App",
+    "Inertia",
+    "MVC",
+    "React",
+    "Vue"
+  ],
+  "shortName": "ease",
+  "sourceName": "Ease.Template",
+  "tags": {
+    "language": "C#",
+    "type": "Web App"
+  },
+  "symbols": {
+    "client": {
+      "type": "parameter",
+      "dataType": "choice",
+      "choices": [
+        {
+          "choice": "Vue",
+          "description": "Vue frontend"
+        },
+        {
+          "choice": "React",
+          "description": "React frontend"
+        },
+        {
+          "choice": "Headless",
+          "description": "Configure your own frontend"
+        }
+      ],
+      "defaultValue": "React",
+      "description": "Choose the type of frontend for your project."
+    }
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "client-react/**",
+        "client-vue/**"
+      ],
+      "condition": "(client == 'Headless')"
+    },
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "client-vue/**"
+      ],
+      "condition": "(client == 'React')"
+    },
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "client-react/**"
+      ],
+      "condition": "(client == 'Vue')"
+    }
+  ]
+}
