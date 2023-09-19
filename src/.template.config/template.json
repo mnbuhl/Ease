@@ -5,7 +5,7 @@
   "name": "Ease Web App",
   "description": "A template for creating web apps with 'Ease' using MVC and Inertia with React or Vue",
   "classifications": [
-    "Web App",
+    "Web",
     "Inertia",
     "MVC",
     "React",
@@ -15,8 +15,60 @@
   "sourceName": "Ease.Template",
   "tags": {
     "language": "C#",
-    "type": "Web App"
+    "type": "project"
   },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "[Bb]in/**",
+        "[Oo]bj/**",
+        ".template.config",
+        ".idea/**",
+        ".vs/**",
+        ".vscode/**",
+        "*.db",
+        "**/*.lock.json",
+        "**/node_modules/**",
+        "**/.vite/**"
+      ]
+    },
+    {
+      "modifiers": [
+        {
+          "condition": "(client == 'Headless')",
+          "exclude": [
+            "client-react/**",
+            "client-vue/**"
+          ]
+        }
+      ]
+    },
+    {
+      "modifiers": [
+        {
+          "condition": "(client == 'React')",
+          "exclude": [
+            "client-vue/**"
+          ]
+        }
+      ]
+    },
+    {
+      "modifiers": [
+        {
+          "condition": "(client == 'Vue')",
+          "exclude": [
+            "client-react/**"
+          ]
+        }
+      ]
+    }
+  ],
   "symbols": {
     "client": {
       "type": "parameter",
@@ -38,32 +90,5 @@
       "defaultValue": "React",
       "description": "Choose the type of frontend for your project."
     }
-  },
-  "sources": [
-    {
-      "source": "./",
-      "target": "./",
-      "exclude": [
-        "client-react/**",
-        "client-vue/**"
-      ],
-      "condition": "(client == 'Headless')"
-    },
-    {
-      "source": "./",
-      "target": "./",
-      "exclude": [
-        "client-vue/**"
-      ],
-      "condition": "(client == 'React')"
-    },
-    {
-      "source": "./",
-      "target": "./",
-      "exclude": [
-        "client-react/**"
-      ],
-      "condition": "(client == 'Vue')"
-    }
-  ]
+  }
 }
