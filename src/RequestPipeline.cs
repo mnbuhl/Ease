@@ -1,4 +1,4 @@
-﻿using Ease.Middleware;
+﻿using Ease.Web.Middleware;
 using InertiaCore.Extensions;
 
 namespace Ease;

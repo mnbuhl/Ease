@@ -1,7 +1,7 @@
 using InertiaCore;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ease.Controllers;
+namespace Ease.Web.Controllers;
 
 public class HomeController : BaseController
 {

@@ -2,7 +2,7 @@
 using Ease.App.Constants;
 using InertiaCore;
 
-namespace Ease.Middleware;
+namespace Ease.Web.Middleware;
 
 public sealed class InertiaMiddleware(RequestDelegate next)
 {

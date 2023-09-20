@@ -1,9 +1,9 @@
 ﻿using Ease.App.Common.Interfaces;
-using Ease.App.Requests;
+using Ease.Web.Requests;
 using InertiaCore;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ease.Controllers.Auth;
+namespace Ease.Web.Controllers.Auth;
 
 public sealed class PasswordController(IPasswordService passwordService) : BaseController
 {

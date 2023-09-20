@@ -17,78 +17,60 @@
     "language": "C#",
     "type": "project"
   },
-  "sources": [
-    {
-      "source": "./",
-      "target": "./",
-      "include": [
-        "**/*"
-      ],
-      "exclude": [
-        "[Bb]in/**",
-        "[Oo]bj/**",
-        ".template.config",
-        ".idea/**",
-        ".vs/**",
-        ".vscode/**",
-        "*.db",
-        "**/*.lock.json",
-        "**/node_modules/**",
-        "**/.vite/**"
-      ]
-    },
-    {
-      "modifiers": [
-        {
-          "condition": "(client == 'Headless')",
-          "exclude": [
-            "client-react/**",
-            "client-vue/**"
-          ]
-        }
-      ]
-    },
-    {
-      "modifiers": [
-        {
-          "condition": "(client == 'React')",
-          "exclude": [
-            "client-vue/**"
-          ]
-        }
-      ]
-    },
-    {
-      "modifiers": [
-        {
-          "condition": "(client == 'Vue')",
-          "exclude": [
-            "client-react/**"
-          ]
-        }
-      ]
-    }
-  ],
   "symbols": {
     "client": {
       "type": "parameter",
-      "dataType": "choice",
+      "datatype": "choice",
       "choices": [
-        {
-          "choice": "Vue",
-          "description": "Vue frontend"
-        },
         {
           "choice": "React",
           "description": "React frontend"
         },
         {
+          "choice": "Vue",
+          "description": "Vue frontend"
+        },
+        {
           "choice": "Headless",
-          "description": "Configure your own frontend"
+          "description": "Configure your own Inertia based frontend"
         }
       ],
-      "defaultValue": "React",
-      "description": "Choose the type of frontend for your project."
+      "defaultValue": "React"
     }
-  }
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "bin/**",
+        "obj/**",
+        ".git/**",
+        ".vscode/**",
+        ".template.config/**",
+        "Migrations/**",
+        "client-react/**",
+        "client-vue/**",
+        "db-*",
+        "*.db",
+        "**/.vite/**",
+        "**/dist/**",
+        "**/node_modules/**"
+      ],
+      "modifiers": [
+        {
+          "condition": "(client == \"React\")",
+          "include": [
+            "client-react/**"
+          ]
+        },
+        {
+          "condition": "(client == \"Vue\")",
+          "include": [
+            "client-vue/**"
+          ]
+        }
+      ]
+    }
+  ]
 }

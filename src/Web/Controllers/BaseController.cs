@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Ease.Controllers;
+namespace Ease.Web.Controllers;
 
 public abstract class BaseController : Controller
 {

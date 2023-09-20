@@ -1,4 +1,4 @@
-﻿using Ease.App.Requests;
+﻿using Ease.Web.Requests;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 

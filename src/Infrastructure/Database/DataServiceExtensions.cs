@@ -9,7 +9,7 @@ public static class DataServiceExtensions
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
             options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-
+            
             if (builder.Environment.IsDevelopment())
             {
                 options.EnableDetailedErrors();

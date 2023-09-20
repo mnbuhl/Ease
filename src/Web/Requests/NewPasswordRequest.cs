@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Ease.App.Requests;
+namespace Ease.Web.Requests;
 
 public record NewPasswordRequest(string CurrentPassword, string Password, string PasswordConfirmation);
 

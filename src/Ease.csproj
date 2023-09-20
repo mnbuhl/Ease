@@ -22,7 +22,6 @@
         <PackageReference Include="NewId" Version="4.0.1"/>
     </ItemGroup>
 
-
     <ItemGroup>
         <Content Include=".template.config\template.json"/>
     </ItemGroup>

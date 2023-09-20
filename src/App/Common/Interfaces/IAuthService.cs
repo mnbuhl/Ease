@@ -1,5 +1,5 @@
 ﻿using Ease.App.Models;
-using Ease.App.Requests;
+using Ease.Web.Requests;
 
 namespace Ease.App.Common.Interfaces;
 

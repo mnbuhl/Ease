@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ease.Controllers;
+namespace Ease.Web.Controllers;
 
 [Authorize]
 public sealed class DashboardController : BaseController

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Ease.App.Requests;
+namespace Ease.Web.Requests;
 
 public record ResetPasswordRequest(string Email, string Token, string Password, string PasswordConfirmation);
 

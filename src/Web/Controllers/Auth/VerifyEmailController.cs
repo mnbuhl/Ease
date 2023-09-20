@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ease.Controllers.Auth;
+namespace Ease.Web.Controllers.Auth;
 
 [Route("verify-email/{action=Index}")]
 public sealed class VerifyEmailController(IVerifyEmailService verifyEmailService, UserManager<User> userManager)

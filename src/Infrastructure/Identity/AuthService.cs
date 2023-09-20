@@ -2,7 +2,7 @@
 using Ease.App.Common.Interfaces;
 using Ease.App.Constants;
 using Ease.App.Models;
-using Ease.App.Requests;
+using Ease.Web.Requests;
 using Microsoft.AspNetCore.Identity;
 
 namespace Ease.Infrastructure.Identity;

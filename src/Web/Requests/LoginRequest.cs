@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Ease.App.Requests;
+namespace Ease.Web.Requests;
 
 public record LoginRequest(string Email, string Password, bool Remember);
 

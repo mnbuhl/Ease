@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Ease.App.Requests;
+namespace Ease.Web.Requests;
 
 public record RegisterRequest(string Email, string Name, string Password, string PasswordConfirmation);
 

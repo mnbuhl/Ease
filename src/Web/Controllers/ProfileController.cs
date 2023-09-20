@@ -1,12 +1,12 @@
 ﻿using Ease.App.Common.Interfaces;
 using Ease.App.Models;
-using Ease.App.Requests;
+using Ease.Web.Requests;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ease.Controllers;
+namespace Ease.Web.Controllers;
 
 [Authorize]
 public sealed class ProfileController(UserManager<User> userManager, SignInManager<User> signInManager,
