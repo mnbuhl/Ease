@@ -32,10 +32,10 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 
 ### Getting Started
 
-Install the template from NuGet:
+Install the templates from NuGet:
 
 ```bash
-dotnet new -i Ease.Template
+dotnet new -i Ease.Templates
 ```
 
 Create a new project:
@@ -45,7 +45,7 @@ React:
 dotnet new ease -n {MyProject} --client React
 ```
 
-Vue:
+Vue (coming soon):
 
 ```bash
 dotnet new ease -n {MyProject} --client Vue

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://json.schemastore.org/template",
   "author": "Mikkel Buhl",
-  "identity": "Ease.Template",
+  "identity": "Ease.Templates",
   "name": "Ease Web App",
   "description": "A template for creating web apps with 'Ease' using MVC and Inertia with React or Vue",
   "classifications": [
@@ -12,7 +12,7 @@
     "Vue"
   ],
   "shortName": "ease",
-  "sourceName": "Ease.Template",
+  "sourceName": "Ease.Templates",
   "tags": {
     "language": "C#",
     "type": "project"

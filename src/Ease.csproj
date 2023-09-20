@@ -7,6 +7,23 @@
         <LangVersion>preview</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <PackageId>Ease.Templates</PackageId>
+        <Title>Ease.Templates</Title>
+        <Description>Templates for creating web apps with 'Ease' using MVC and Inertia with React or Vue</Description>
+        <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+        <PackageTags>Web;Inertia;MVC;React;Vue;dotnet-new</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageVersion>0.0.1</PackageVersion>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/mnbuhl/Ease</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include=".\..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="AspNetCore.InertiaCore" Version="0.0.8"/>
