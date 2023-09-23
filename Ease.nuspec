@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Ease.Templates</id>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
         <title>Ease Templates</title>
         <authors>Mikkel Buhl</authors>
         <description>Templates for creating web apps with 'Ease' using MVC and Inertia with React or Vue</description>
@@ -11,7 +11,7 @@
             Templates for creating web apps with 'Ease' using MVC and Inertia with React or Vue.
         </summary>
         <releaseNotes>
-            Initial release
+            Finalise backend and React CSR template
         </releaseNotes>
 
         <tags>Web;Inertia;MVC;React;Vue</tags>

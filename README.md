@@ -16,14 +16,15 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 
 ## TODO
 
-- [ ] : Finish backend implementations
-- [ ] : Convert to template
+- [x] : Finish backend implementations
+- [x] : Convert to template
+- [x] : Publish to NuGet
+- [ ] : Simplify setup process
 - [ ] : Add SSR support
-- [ ] : Publish to NuGet
 - [ ] : Add Vue support
+- [ ] : Add documentation
 - [ ] : Add landing page
 - [ ] : Add tests
-- [ ] : Add documentation
 - [ ] : Add Docker support
 - [ ] : Add CI/CD
 - [ ] : Use tailwind theming for easier customization
@@ -65,6 +66,17 @@ dotnet new ease -n {MyProject} --client react --database sqlite || sqlserver || 
 ```
 
 *** MySQL is currently not supported because Pomelo has not updated their adapter to .NET 8.0
+
+### Run the project
+
+```bash
+dotnet run --seed && dotnet run
+```
+
+```bash
+cd client
+npm i && npm run dev
+```
 
 ### Features
 
