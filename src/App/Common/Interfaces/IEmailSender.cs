@@ -1,4 +1,4 @@
-﻿using Ease.App.Common.Helpers;
+﻿using Ease.Infrastructure.Mailing;
 
 namespace Ease.App.Common.Interfaces;
 
