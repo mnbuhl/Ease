@@ -1,0 +1,26 @@
+﻿{
+  "$schema": "https://json.schemastore.org/vs-2017.3.host",
+  "order": 0,
+  "symbolInfo": [
+    {
+      "id": "client",
+      "name": {
+        "text": "Client"
+      },
+      "description": {
+        "text": "Select the client to use for the frontend."
+      },
+      "isVisible": true
+    },
+    {
+      "id": "database",
+      "name": {
+        "text": "Database"
+      },
+      "description": {
+        "text": "Select the database to use for the backend."
+      },
+      "isVisible": true
+    }
+  ]
+}

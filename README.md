@@ -38,23 +38,30 @@ Install the templates from NuGet:
 dotnet new -i Ease.Templates
 ```
 
-Create a new project:
+### Create a new project:
 
 React:
 ```bash
-dotnet new ease -n {MyProject} --client React
+dotnet new ease -n {MyProject} --client react
 ```
 
 Vue (coming soon):
 
 ```bash
-dotnet new ease -n {MyProject} --client Vue
+dotnet new ease -n {MyProject} --client vue
 ```
 
 Headless (configure your own frontend)
 
 ```bash
-dotnet new ease -n {MyProject} --client Headless
+dotnet new ease -n {MyProject} --client headless
+```
+
+The default database is PostgreSQL, but you can change it to SQL Server, SQLite or MySQL by adding the `--database`
+option:
+
+```bash
+dotnet new ease -n {MyProject} --client react --database sqlite || sqlserver || postgresql || mysql
 ```
 
 ### Features

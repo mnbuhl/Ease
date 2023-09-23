@@ -1,0 +1,159 @@
+﻿{
+  "$schema": "https://json.schemastore.org/template",
+  "author": "Mikkel Buhl",
+  "identity": "Ease.Templates.CSharp",
+  "groupIdentity": "Ease.Templates",
+  "name": "Ease Web App",
+  "description": "A template for creating web apps with 'Ease' using MVC and Inertia with React or Vue",
+  "preferNameDirectory": true,
+  "classifications": [
+    "Web",
+    "Inertia",
+    "MVC",
+    "React",
+    "Vue"
+  ],
+  "shortName": "ease",
+  "sourceName": "Ease",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "symbols": {
+    "client": {
+      "displayName": "Client",
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "react",
+          "displayName": "React",
+          "description": "React frontend"
+        },
+        {
+          "choice": "vue",
+          "displayName": "Vue",
+          "description": "Vue frontend"
+        },
+        {
+          "choice": "headless",
+          "displayName": "Headless",
+          "description": "Configure your own Inertia based frontend"
+        }
+      ],
+      "defaultValue": "React",
+      "description": "The frontend to use"
+    },
+    "database": {
+      "displayName": "Database",
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "postgresql",
+          "displayName": "PostgreSQL",
+          "description": "PostgreSQL database"
+        },
+        {
+          "choice": "sqlite",
+          "displayName": "SQLite",
+          "description": "SQLite database"
+        },
+        {
+          "choice": "sqlserver",
+          "displayName": "SQL Server",
+          "description": "Microsoft SQL Server database"
+        },
+        {
+          "choice": "mysql",
+          "displayName": "MySQL",
+          "description": "MySQL database"
+        }
+      ],
+      "defaultValue": "postgresql",
+      "description": "The database to use"
+    },
+    "UseReact": {
+      "type": "computed",
+      "value": "(client == \"react\")"
+    },
+    "UseVue": {
+      "type": "computed",
+      "value": "(client == \"vue\")"
+    },
+    "UseHeadless": {
+      "type": "computed",
+      "value": "(client == \"headless\")"
+    },
+    "UseSQLite": {
+      "type": "computed",
+      "value": "(database == \"sqlite\")"
+    },
+    "UseMSSQL": {
+      "type": "computed",
+      "value": "(database == \"sqlserver\")"
+    },
+    "UsePostgreSQL": {
+      "type": "computed",
+      "value": "(database == \"postgresql\")"
+    },
+    "UseMySQL": {
+      "type": "computed",
+      "value": "(database == \"mysql\")"
+    }
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".git/**",
+        ".vs/**",
+        ".vscode/**",
+        ".idea/**",
+        ".template.config/**",
+        ".scripts/**",
+        "LICENSE",
+        "obj/**",
+        "bin/**",
+        "wwwroot/dist/**",
+        "app.db",
+        "app.db-shm",
+        "app.db-wal"
+      ],
+      "modifiers": [
+        {
+          "condition": "(UseReact)",
+          "exclude": [
+            "client-vue/**",
+            "client-react/node_modules/**",
+            "client-react/package-lock.json",
+            "client-react/.vite/**"
+          ],
+          "rename": {
+            "client-react": "client"
+          }
+        },
+        {
+          "condition": "(UseVue)",
+          "exclude": [
+            "client-react/**",
+            "client-vue/node_modules/**",
+            "client-vue/package-lock.json",
+            "client-vue/.vite/**"
+          ],
+          "rename": {
+            "client-vue": "client"
+          }
+        },
+        {
+          "condition": "(UseHeadless)",
+          "exclude": [
+            "client-react/**",
+            "client-vue/**"
+          ]
+        }
+      ]
+    }
+  ]
+}

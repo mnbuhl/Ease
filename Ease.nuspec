@@ -14,7 +14,7 @@
             Initial release
         </releaseNotes>
 
-        <tags>Web;Inertia;MVC;React;Vue;dotnet-new</tags>
+        <tags>Web;Inertia;MVC;React;Vue</tags>
         <license type="expression">MIT</license>
         <repository type="git" url="https://github.com/mnbuhl/Ease"/>
         <projectUrl>https://github.com/mnbuhl/Ease</projectUrl>
