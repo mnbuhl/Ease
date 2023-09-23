@@ -10,7 +10,11 @@ public static class AppServices
 {
     public static void ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddInertia(options => { options.SsrEnabled = false; });
+        builder.Services.AddInertia(options =>
+        {
+            options.RootView = "/Web/Views/App.cshtml";
+            options.SsrEnabled = false;
+        });
 
         builder.Services.AddViteHelper(options =>
         {

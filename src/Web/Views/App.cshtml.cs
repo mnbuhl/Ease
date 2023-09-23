@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Ease.Views;
+namespace Ease.Web.Views;
 
 public class App : PageModel
 {
