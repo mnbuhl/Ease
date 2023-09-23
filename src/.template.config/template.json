@@ -147,6 +147,36 @@
             "client-react/**",
             "client-vue/**"
           ]
+        },
+        {
+          "condition": "(UseSQLite)",
+          "exclude": [
+            "**/Migrations-PostgreSQL/**",
+            "**/Migrations-SQLServer/**"
+          ],
+          "rename": {
+            "Migrations-SQLite": "Migrations"
+          }
+        },
+        {
+          "condition": "(UsePostgreSQL)",
+          "exclude": [
+            "**/Migrations-SQLite/**",
+            "**/Migrations-SQLServer/**"
+          ],
+          "rename": {
+            "Migrations-PostgreSQL": "Migrations"
+          }
+        },
+        {
+          "condition": "(UseMSSQL)",
+          "exclude": [
+            "**/Migrations-SQLite/**",
+            "**/Migrations-PostgreSQL/**"
+          ],
+          "rename": {
+            "Migrations-SQLServer": "Migrations"
+          }
         }
       ]
     }
