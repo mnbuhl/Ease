@@ -57,12 +57,14 @@ Headless (configure your own frontend)
 dotnet new ease -n {MyProject} --client headless
 ```
 
-The default database is PostgreSQL, but you can change it to SQL Server, SQLite or MySQL by adding the `--database`
+The default database is PostgreSQL, but you can change it to SQL Server or SQLite by adding the `--database`
 option:
 
 ```bash
-dotnet new ease -n {MyProject} --client react --database sqlite || sqlserver || postgresql || mysql
+dotnet new ease -n {MyProject} --client react --database sqlite || sqlserver || postgresql
 ```
+
+*** MySQL is currently not supported because Pomelo has not updated their adapter to .NET 8.0
 
 ### Features
 

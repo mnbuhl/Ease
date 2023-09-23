@@ -63,11 +63,6 @@
           "choice": "sqlserver",
           "displayName": "SQL Server",
           "description": "Microsoft SQL Server database"
-        },
-        {
-          "choice": "mysql",
-          "displayName": "MySQL",
-          "description": "MySQL database"
         }
       ],
       "defaultValue": "postgresql",

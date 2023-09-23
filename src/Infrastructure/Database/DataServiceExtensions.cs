@@ -8,7 +8,13 @@ public static class DataServiceExtensions
     {
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+#if (UseSQLite)
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultSqliteConnection"));
+#elif (UseMSSQL)
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSqlServerConnection"));
+#else
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultPostgresConnection"));
+#endif
             
             if (builder.Environment.IsDevelopment())
             {

@@ -15,9 +15,17 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0-rc.1.23421.29"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-rc.1.23419.6"/>
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0"/>
         <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0-rc.1.23421.29"/>
         <PackageReference Include="NewId" Version="4.0.1"/>
+        <!--#if (UseMSSQL)-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-rc.1.23419.6"/>
+        <!--#endif-->
+        <!--#if (UsePostgreSQL)-->
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-rc.1"/>
+        <!--#endif-->
+        <!--#if (UseSQLite)-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-rc.1.23419.6"/>
+        <!--#endif-->
     </ItemGroup>
 </Project>
