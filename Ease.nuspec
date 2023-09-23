@@ -29,6 +29,6 @@
     <files>
         <file src="README.md"/>
         <file src=".\**" target="content"
-              exclude="Ease.nuspec;.git\**;.vs\**;.vscode\**;.idea\**;**\bin\**;**\obj\**;**\wwwroot\dist\**;**\node_modules\**;**\.vite\**;LICENSE;**\app.db;**\app.db-shm;**\app.db-wal;"/>
+              exclude="Ease.nuspec;.git\**;.vs\**;.vscode\**;.idea\**;**\bin\**;**\obj\**;**\wwwroot\dist\**;**\node_modules\**;**\.vite\**;LICENSE;**\app.db;**\app.db-shm;**\app.db-wal;.scripts\**;"/>
     </files>
 </package>

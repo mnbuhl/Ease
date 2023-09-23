@@ -60,6 +60,7 @@
         ".vscode/**",
         ".idea/**",
         ".template.config/**",
+        ".scripts/**",
         "LICENSE",
         "src/obj/**",
         "src/bin/**",
