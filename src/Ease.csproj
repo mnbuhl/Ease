@@ -38,8 +38,4 @@
         <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0-rc.1.23421.29"/>
         <PackageReference Include="NewId" Version="4.0.1"/>
     </ItemGroup>
-
-    <ItemGroup>
-        <Content Include=".template.config\template.json"/>
-    </ItemGroup>
 </Project>

@@ -4,7 +4,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{27567FC9-C70
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{91108D98-B7B6-4405-ABCA-A4CC7C7BA839}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
