@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "ssr": "tsc && vite build && vite build --ssr",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "node ../wwwroot/dist/ssr"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

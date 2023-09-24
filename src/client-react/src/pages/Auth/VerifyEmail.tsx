@@ -1,7 +1,7 @@
 ﻿import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import Button from '../../components/Button.tsx';
-import GuestLayout from '../../layouts/GuestLayout.tsx';
+import Button from '../../components/Button';
+import GuestLayout from '../../layouts/GuestLayout';
 
 type Props = {
   status?: string;

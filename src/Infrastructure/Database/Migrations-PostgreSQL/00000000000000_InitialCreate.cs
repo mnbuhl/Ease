@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if(UsePostgreSQL)
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -224,3 +225,4 @@ namespace Ease.Infrastructure.Database.Migrations
         }
     }
 }
+#endif
