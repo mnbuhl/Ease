@@ -9,7 +9,7 @@
     "build:ssr": "tsc && vite build && vite build --ssr",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "serve": "vite preview",
-    "serve:ssr": "vite preview --ssr"
+    "serve:ssr": "node dist/ssr"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -28,7 +28,6 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.15",
-    "concurrently": "^8.2.1",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
