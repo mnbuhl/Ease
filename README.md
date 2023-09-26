@@ -19,14 +19,14 @@ from [Laravel Breeze](https://github.com/laravel/breeze).
 - [x] : Finish backend implementations
 - [x] : Convert to template
 - [x] : Publish to NuGet
+- [x] : Add SSR support
 - [ ] : Simplify setup process
-- [ ] : Add SSR support
+- [ ] : Add CI/CD
+- [ ] : Add landing page
 - [ ] : Add Vue support
 - [ ] : Add documentation
-- [ ] : Add landing page
 - [ ] : Add tests
 - [ ] : Add Docker support
-- [ ] : Add CI/CD
 - [ ] : Use tailwind theming for easier customization
 - [ ] : Configure default email layout
 - [ ] : JavaScript variants?

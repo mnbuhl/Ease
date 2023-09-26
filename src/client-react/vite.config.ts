@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc';
 import laravel from 'laravel-vite-plugin';
 import { mkdirSync } from 'fs';
 
-const outDir = '../wwwroot/dist';
+const outDir = '../wwwroot';
 
 mkdirSync(outDir, { recursive: true });
 
@@ -14,14 +14,14 @@ export default defineConfig(({ ssrBuild }) => {
       laravel({
         input: ['src/main.tsx'],
         publicDirectory: outDir,
-        refresh: true,
+        buildDirectory: 'dist',
         ssr: ssrBuild ? ['src/ssr.tsx'] : undefined,
-        ssrOutputDirectory: '../wwwroot/ssr',
+        refresh: true,
+        ssrOutputDirectory: 'dist',
       }),
       react(),
     ],
     build: {
-      outDir,
       emptyOutDir: true,
     },
   };
