@@ -13,7 +13,8 @@ public static class AppServices
         builder.Services.AddInertia(options =>
         {
             options.RootView = "/Web/Views/App.cshtml";
-            options.SsrEnabled = false;
+            options.SsrEnabled = true;
+            options.SsrUrl = "http://127.0.0.1:13714/render";
         });
 
         builder.Services.AddViteHelper(options =>

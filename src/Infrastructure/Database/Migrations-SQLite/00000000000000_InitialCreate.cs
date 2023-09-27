@@ -1,5 +1,4 @@
-﻿#if(UseSQLite)
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -217,4 +216,3 @@ public partial class InitialCreate : Migration
             "Users");
     }
 }
-#endif

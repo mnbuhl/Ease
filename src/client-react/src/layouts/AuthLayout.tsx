@@ -1,8 +1,7 @@
-import {Link, usePage} from '@inertiajs/react';
-import {PropsWithChildren, ReactNode, useState} from 'react';
-import {PageProps} from '../page-props';
+import { Link, usePage } from '@inertiajs/react';
+import { PropsWithChildren, ReactNode, useState } from 'react';
+import { PageProps } from '../page-props';
 import ApplicationLogo from '../assets/ApplicationLogo';
-import {isCurrentRoute} from '../util/route';
 import NavLink from '../components/NavLink';
 import Dropdown from '../components/Dropdown';
 import Toast from '../components/Toast';
@@ -10,7 +9,14 @@ import Toast from '../components/Toast';
 const AuthLayout = ({ children, header }: PropsWithChildren<{ header?: ReactNode }>) => {
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
-  const { auth, toast } = usePage<PageProps>().props;
+  const {
+    props: { auth, toast },
+    url,
+  } = usePage<PageProps>();
+
+  const isCurrentRoute = (route: string) => {
+    return url.startsWith(route);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -118,13 +124,11 @@ const AuthLayout = ({ children, header }: PropsWithChildren<{ header?: ReactNode
           </div>
         </div>
       </nav>
-
       {header && (
         <header className="bg-white dark:bg-gray-800 shadow">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
         </header>
       )}
-
       <main>{children}</main>
       <Toast message={toast?.message} type={toast?.type} />
     </div>
