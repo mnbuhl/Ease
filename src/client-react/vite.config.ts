@@ -4,6 +4,7 @@ import laravel from 'laravel-vite-plugin';
 import { mkdirSync } from 'fs';
 
 const outDir = '../wwwroot';
+const distDir = 'dist';
 
 mkdirSync(outDir, { recursive: true });
 
@@ -14,10 +15,11 @@ export default defineConfig(({ ssrBuild }) => {
       laravel({
         input: ['src/main.tsx'],
         publicDirectory: outDir,
-        buildDirectory: 'dist',
+        hotFile: `${outDir}/${distDir}/hot`,
+        buildDirectory: distDir,
         ssr: ssrBuild ? ['src/ssr.tsx'] : undefined,
         refresh: true,
-        ssrOutputDirectory: 'dist',
+        ssrOutputDirectory: distDir,
       }),
       react(),
     ],
