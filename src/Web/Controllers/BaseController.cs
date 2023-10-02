@@ -23,3 +23,9 @@ public abstract class BaseController : Controller
         return Redirect(referer);
     }
 }
+
+[ApiController]
+[Route("api/[controller]")]
+public abstract class BaseApiController : ControllerBase
+{
+}

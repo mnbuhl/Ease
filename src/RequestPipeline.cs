@@ -17,7 +17,6 @@ public static class RequestPipeline
 
         app.UseInertia();
 
-        app.UseHttpsRedirection();
         app.UseStaticFiles();
 
         app.UseRouting();
